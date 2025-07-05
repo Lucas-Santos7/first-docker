@@ -19,3 +19,5 @@ services:
     volumes:
       - .:/app
 
+
+#for more pratice. use docker-compose up for run your image

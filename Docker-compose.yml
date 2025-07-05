@@ -1,0 +1,21 @@
+# Defines the different services (containers) that make up your application.
+services:
+  # 'api' is the name we're giving to our FastAPI application service.
+  api:
+    # 'build: .' tells Docker Compose to build a Docker image for this service.
+    # The '.' means it will look for a 'Dockerfile' in the current directory.
+    build: .
+    container_name: api_container
+    # 'ports' maps ports between the host machine and the container.
+    # This line maps port 8000 on your computer to port 8000 inside the container.
+    # Format is "HOST_PORT:CONTAINER_PORT".
+    ports:
+      - "8000:8000"
+
+    # 'volumes' mount a host path into the container. This is very useful for development.
+    # '.:/app' mounts the current project directory on your machine to the '/app' directory inside the container.
+    # This means any code changes you make locally are immediately reflected inside the container,
+    # which is what allows uvicorn's --reload to work.
+    volumes:
+      - .:/app
+
